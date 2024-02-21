@@ -14,7 +14,7 @@ public:
 
 public:
 	size_t Length(char* _arr);
-	char& CharacterAt(size_t _index);
+	char& CharacterAt(char* _arr, size_t _index);
 	const char& CharacterAt(size_t _index) const;
 
 	bool EqualTo(const String& _other) const;
