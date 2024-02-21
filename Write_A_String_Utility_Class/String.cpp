@@ -4,6 +4,5 @@
 size_t String::Length(char* _arr) {
 	int len;
 	len = strlen(_arr);
-	len -= 1;
 	return len;
 }
