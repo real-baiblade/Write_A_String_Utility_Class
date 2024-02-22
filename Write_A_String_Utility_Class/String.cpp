@@ -100,7 +100,16 @@ String& String::Prepend(const String& _str) {
 String& String::ToLower() {
 	for (int i = 0; i < strlen(str); i++) {
 		if (65 <= str[i] <= 90) {
-			str[i] + 32;
+			str[i] += 32;
+		}
+	}
+	return *this;
+}
+
+String& String::ToUpper() {
+	for (int i = 0; i < strlen(str); i++) {
+		if (97 <= str[i] <= 122) {
+			str[i] -= 32;
 		}
 	}
 	return *this;
