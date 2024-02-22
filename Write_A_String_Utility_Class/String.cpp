@@ -68,3 +68,11 @@ bool String::EqualTo(const String& _other) const {
 		return false;
 	}
 }
+
+String& String::Append(const String& _str) {
+	int len;
+	len = this->Length();
+	for (int i = 0; i < _str.Length(); i++) {
+		this->str[i + len] = _str.str[i];
+	}
+}
