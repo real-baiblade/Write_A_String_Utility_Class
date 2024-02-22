@@ -32,3 +32,7 @@ String::String(const String& _other) {
 String::~String() {
 	delete str;
 }
+
+size_t String::Length() const {
+	return strlen(str);
+}
