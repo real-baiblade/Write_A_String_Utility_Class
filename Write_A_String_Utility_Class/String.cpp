@@ -1,20 +1,34 @@
 #include "String.h"
-#include <string.h>
+#include <cstring>
+#include <iostream>
+using namespace std;
 
-size_t String::Length(char* _arr) {
-	int len;
-	len = strlen(_arr);
-	return len;
+String::String() : str{ nullptr }  {
+	str = new char[1];
+	str[0] = '\0';
 }
 
-char& String::CharacterAt(char* _arr, size_t _index) {
-	char character;
-	if ((_index > 0) && (_index < Length(_arr))) {
-		character = _arr[_index];
-		return character;
+String::String(const char* _str) {
+	if (_str == nullptr) {
+		str = new char[1];
+		str[0] = '\0';
 	}
 	else {
-		character = '/0';
-		return character;
+		str = new char[strlen(_str) + 1];
+
+		strcpy(str, _str);
+		str[strlen(_str)] = '\0';
+
+		cout << "The string passed is : " << str << endl;
 	}
+}
+
+String::String(const String& _other) {
+	str = new char[strlen(_other.str) + 1];
+	strcpy(str, _other.str);
+	str[strlen(_other.str)] = '\0';
+}
+
+String::~String() {
+	delete str;
 }

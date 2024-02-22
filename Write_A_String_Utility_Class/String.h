@@ -6,6 +6,7 @@ class String
 {
 public:
 	String();
+
 	String(const char* _str);
 
 	String(const String& _other);
@@ -13,8 +14,8 @@ public:
 	~String();
 
 public:
-	size_t Length(char* _arr);
-	char& CharacterAt(char* _arr, size_t _index);
+	size_t Length() const;
+	char& CharacterAt(size_t _index);
 	const char& CharacterAt(size_t _index) const;
 
 	bool EqualTo(const String& _other) const;
@@ -45,9 +46,7 @@ public:
 	const char& operator[](size_t _index) const;
 
 private:
-	/*
-	* Put your internal data structures and members here
-	*/
+	char* str;
 };
 
 #endif
