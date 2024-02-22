@@ -23,7 +23,7 @@ public:
 	String& Append(const String& _str);
 	String& Prepend(const String& _str);
 
-	const char* CStr() const;
+	/*const char* CStr() const;
 
 	String& ToLower();
 	String& ToUpper();
@@ -43,7 +43,7 @@ public:
 	String& operator=(const String& _str);
 
 	char& operator[](size_t _index);
-	const char& operator[](size_t _index) const;
+	const char& operator[](size_t _index) const;*/
 
 private:
 	char* str;

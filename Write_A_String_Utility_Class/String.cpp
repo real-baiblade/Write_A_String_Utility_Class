@@ -1,6 +1,7 @@
 #include "String.h"
 #include <cstring>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 String::String() : str{ nullptr }  {
@@ -75,19 +76,21 @@ String& String::Append(const String& _str) {
 	for (int i = 0; i < _str.Length(); i++) {
 		this->str[i + len] = _str.str[i];
 	}
+	return *this;
 }
 
 String& String::Prepend(const String& _str) {
-	char* temp;
+	vector<char> temp;
 	for (int i = 0; i < this->Length(); i++) {
 		temp[i + _str.Length()] = str[i];
 	}
-	for (int j = 0; j < strlen(temp); j++) {
+	for (int j = 0; j < (this->Length() + _str.Length()); j++) {
 		if (j < _str.Length()) {
-			str[j] = _str[j];
+			str[j] = _str.str[j];
 		}
 		else if (j >= _str.Length()) {
 			str[j] = temp[j];
 		}
 	}
+	return *this;
 }
