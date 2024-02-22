@@ -31,6 +31,7 @@ String::String(const String& _other) {
 
 String::~String() {
 	delete str;
+	str = nullptr;
 }
 
 size_t String::Length() const {
@@ -65,5 +66,13 @@ bool String::EqualTo(const String& _other) const {
 	} 
 	else {
 		return false;
+	}
+}
+
+String& String::Append(const String& _str) {
+	int len;
+	len = this->Length();
+	for (int i = 0; i < _str.Length(); i++) {
+		this->str[i + len] = _str.str[i];
 	}
 }
