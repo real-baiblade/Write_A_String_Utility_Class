@@ -36,3 +36,14 @@ String::~String() {
 size_t String::Length() const {
 	return strlen(str);
 }
+
+char& String::CharacterAt(rsize_t index) {
+	if ((index < 0) || (index > Length())) {
+		char null = '\0';
+		return null;
+	}
+	else {
+		char item = str[index];
+		return item;
+	}
+}
