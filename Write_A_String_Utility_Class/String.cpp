@@ -58,3 +58,12 @@ const char& String::CharacterAt(size_t _index) const {
 		return item;
 	}
 }
+
+bool String::EqualTo(const String& _other) const {
+	if (this->str == _other.str) {
+		return true;
+	} 
+	else {
+		return false;
+	}
+}
