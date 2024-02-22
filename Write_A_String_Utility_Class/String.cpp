@@ -31,6 +31,7 @@ String::String(const String& _other) {
 
 String::~String() {
 	delete str;
+	str = nullptr;
 }
 
 size_t String::Length() const {
