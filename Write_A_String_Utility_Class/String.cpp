@@ -94,3 +94,14 @@ String& String::Prepend(const String& _str) {
 	}
 	return *this;
 }
+
+
+
+String& String::ToLower() {
+	for (int i = 0; i < strlen(str); i++) {
+		if (65 <= str[i] <= 90) {
+			str[i] + 32;
+		}
+	}
+	return *this;
+}
