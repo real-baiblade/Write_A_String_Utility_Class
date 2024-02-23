@@ -114,3 +114,41 @@ String& String::ToUpper() {
 	}
 	return *this;
 }
+
+size_t String::Find(const String& _str) {
+	char* temp;
+	int start = 0;
+	for (int i = 0; i < strlen(str); i++) {
+		if (str[i] == _str.str[0]) {
+			start = i;
+			for (int j = 0; j < strlen(_str.str); j++) {
+				if (str[i + j] == _str.str[j]) {
+					temp[j] = _str.str[j];
+				}
+			}
+			if (temp == _str.str) {
+				return start;
+			}
+		}
+	}
+	return -1;
+}
+
+size_t String::Find(size_t _startIndex, const String& _str) {
+	char* temp;
+	int start = 0;
+	for (int i = _startIndex; i < strlen(str); i++) {
+		if (str[i] == _str.str[0]) {
+			start = i;
+			for (int j = 0; j < strlen(_str.str); j++) {
+				if (str[i + j] == _str.str[j]) {
+					temp[j] = _str.str[j];
+				}
+			}
+			if (temp == _str.str) {
+				return start;
+			}
+		}
+	}
+	return -1;
+}
