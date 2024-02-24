@@ -47,6 +47,7 @@ public:
 
 private:
 	char* str;
+	char* fix_temp;
 };
 
 #endif

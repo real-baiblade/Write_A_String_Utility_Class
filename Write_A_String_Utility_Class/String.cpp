@@ -116,7 +116,7 @@ String& String::ToUpper() {
 }
 
 size_t String::Find(const String& _str) {
-	char* temp;
+	char* temp = fix_temp;
 	int start = 0;
 	for (int i = 0; i < strlen(str); i++) {
 		if (str[i] == _str.str[0]) {
@@ -135,7 +135,7 @@ size_t String::Find(const String& _str) {
 }
 
 size_t String::Find(size_t _startIndex, const String& _str) {
-	char* temp;
+	char* temp = fix_temp;
 	int start = 0;
 	for (int i = _startIndex; i < strlen(str); i++) {
 		if (str[i] == _str.str[0]) {
@@ -157,7 +157,7 @@ String& String::Replace(const String& _find, const String& _replace) {
 	int start;
 	int len;
 	int len2;
-	char* temp;
+	char* temp = fix_temp;
 	start = Find(_find.str);
 	len = _find.Length();
 	len2 = _replace.Length();
@@ -176,7 +176,7 @@ String& String::Replace(const String& _find, const String& _replace) {
 }
 
 String& String::ReadFromConsole() {
-	char* temp;
+	char* temp = fix_temp;
 	cin >> temp;
 	str = temp;
 	return *this;
