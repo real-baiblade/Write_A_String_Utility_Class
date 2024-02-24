@@ -181,3 +181,8 @@ String& String::ReadFromConsole() {
 	str = temp;
 	return *this;
 }
+
+String& String::WriteToConsole() {
+	cout << str << endl;
+	return *this;
+}
