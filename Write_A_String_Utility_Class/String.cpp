@@ -152,3 +152,25 @@ size_t String::Find(size_t _startIndex, const String& _str) {
 	}
 	return -1;
 }
+
+String& String::Replace(const String& _find, const String& _replace) {
+	int start;
+	int len;
+	int len2;
+	char* temp;
+	start = Find(_find.str);
+	len = _find.Length();
+	len2 = _replace.Length();
+	if (start != -1) {
+		for (int j = start + len; j < strlen(str); j++) {
+			temp[j] = str[j];
+		}
+		for (int i = start; i < strlen(_replace.str); i++) {
+			str[i] = _replace.str[i];
+		}
+		for (int k = start + len2; k < (strlen(str) - strlen(_find.str) + strlen(_replace.str)); k++) {
+			str[k] = temp[k - len2 + len];
+		}
+	}
+	return *this;
+}
