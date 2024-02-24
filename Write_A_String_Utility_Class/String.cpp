@@ -174,3 +174,10 @@ String& String::Replace(const String& _find, const String& _replace) {
 	}
 	return *this;
 }
+
+String& String::ReadFromConsole() {
+	char* temp;
+	cin >> temp;
+	str = temp;
+	return *this;
+}
