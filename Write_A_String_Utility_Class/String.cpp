@@ -234,3 +234,25 @@ const char& String::operator [] (size_t _index) const {
 	at_index[1] = '\0';
 	return *at_index;
 }
+
+bool String::operator < (const String& _other) {
+	int len = Length();
+	int len2 = _other.Length();
+	for (int i = 0; i < len; i++) {
+		if (str[i] < _other.str[i]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool String::operator > (const String& _other) {
+	int len = Length();
+	int len2 = _other.Length();
+	for (int i = 0; i < len; i++) {
+		if (str[i] > _other.str[i]) {
+			return true;
+		}
+	}
+	return false;
+}
