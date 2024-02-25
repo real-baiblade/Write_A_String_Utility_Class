@@ -45,6 +45,9 @@ public:
 	char& operator[](size_t _index);
 	const char& operator[](size_t _index) const;
 
+	bool operator<(const String& _other);
+	bool operator>(const String& _other);
+
 private:
 	char* str;
 	char* fix_temp;
