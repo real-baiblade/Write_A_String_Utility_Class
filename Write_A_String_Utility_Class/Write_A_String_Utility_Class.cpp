@@ -2,10 +2,13 @@
 //
 
 #include <iostream>
+#include "String.h"
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    char hello[12] = "Hello World";
+    String* Hello = new String(hello);
+    cout << Hello->CStr() << endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
