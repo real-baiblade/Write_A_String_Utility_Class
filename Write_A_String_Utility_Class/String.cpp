@@ -95,7 +95,10 @@ String& String::Prepend(const String& _str) {
 	return *this;
 }
 
-
+const char* String::CStr() const {
+	const char* c_str = str;
+	return c_str;
+}
 
 String& String::ToLower() {
 	for (int i = 0; i < strlen(str); i++) {
