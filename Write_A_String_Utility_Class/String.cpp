@@ -220,3 +220,17 @@ String& String::operator = (const String& _str) {
 	str = _str.str;
 	return *this;
 }
+
+char& String::operator [] (size_t _index) {
+	char* at_index = fix_temp;
+	at_index[0] = str[_index];
+	at_index[1] = '\0';
+	return *at_index;
+}
+
+const char& String::operator [] (size_t _index) const {
+	char* at_index = fix_temp;
+	at_index[0] = str[_index];
+	at_index[1] = '\0';
+	return *at_index;
+}
