@@ -215,3 +215,8 @@ bool String::operator != (const String& _other) {
 	}
 	return false;
 }
+
+String& String::operator = (const String& _str) {
+	str = _str.str;
+	return *this;
+}
