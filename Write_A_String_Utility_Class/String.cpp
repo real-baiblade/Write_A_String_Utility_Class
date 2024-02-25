@@ -36,7 +36,13 @@ String::~String() {
 }
 
 size_t String::Length() const {
-	return strlen(str);
+	int len = 0;
+	for (int i = 0; i = strlen(str); i++) {
+		if (str[i] != '\0') {
+			len += 1;
+		}
+	}
+	return len;
 }
 
 char& String::CharacterAt(size_t _index) {
@@ -101,7 +107,7 @@ const char* String::CStr() const {
 }
 
 String& String::ToLower() {
-	for (int i = 0; i < strlen(str); i++) {
+	for (int i = 0; i < Length(); i++) {
 		if (65 <= str[i] <= 90) {
 			str[i] += 32;
 		}
@@ -110,7 +116,7 @@ String& String::ToLower() {
 }
 
 String& String::ToUpper() {
-	for (int i = 0; i < strlen(str); i++) {
+	for (int i = 0; i < Length(); i++) {
 		if (97 <= str[i] <= 122) {
 			str[i] -= 32;
 		}
@@ -121,10 +127,10 @@ String& String::ToUpper() {
 size_t String::Find(const String& _str) {
 	char* temp = fix_temp;
 	int start = 0;
-	for (int i = 0; i < strlen(str); i++) {
+	for (int i = 0; i < Length(); i++) {
 		if (str[i] == _str.str[0]) {
 			start = i;
-			for (int j = 0; j < strlen(_str.str); j++) {
+			for (int j = 0; j < _str.Length(); j++) {
 				if (str[i + j] == _str.str[j]) {
 					temp[j] = _str.str[j];
 				}
@@ -140,10 +146,10 @@ size_t String::Find(const String& _str) {
 size_t String::Find(size_t _startIndex, const String& _str) {
 	char* temp = fix_temp;
 	int start = 0;
-	for (int i = _startIndex; i < strlen(str); i++) {
+	for (int i = _startIndex; i < Length(); i++) {
 		if (str[i] == _str.str[0]) {
 			start = i;
-			for (int j = 0; j < strlen(_str.str); j++) {
+			for (int j = 0; j < _str.Length(); j++) {
 				if (str[i + j] == _str.str[j]) {
 					temp[j] = _str.str[j];
 				}
@@ -165,13 +171,13 @@ String& String::Replace(const String& _find, const String& _replace) {
 	len = _find.Length();
 	len2 = _replace.Length();
 	if (start != -1) {
-		for (int j = start + len; j < strlen(str); j++) {
+		for (int j = start + len; j < Length(); j++) {
 			temp[j] = str[j];
 		}
-		for (int i = start; i < strlen(_replace.str); i++) {
+		for (int i = start; i < _replace.Length(); i++) {
 			str[i] = _replace.str[i];
 		}
-		for (int k = start + len2; k < (strlen(str) - strlen(_find.str) + strlen(_replace.str)); k++) {
+		for (int k = start + len2; k < (Length() - _find.Length() + _replace.Length()); k++) {
 			str[k] = temp[k - len2 + len];
 		}
 	}
