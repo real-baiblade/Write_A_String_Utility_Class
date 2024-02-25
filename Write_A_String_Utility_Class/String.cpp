@@ -189,3 +189,29 @@ String& String::WriteToConsole() {
 	cout << str << endl;
 	return *this;
 }
+
+bool String::operator == (const String& _other) {
+	int len = Length();
+	int len2 = _other.Length();
+	if (len == len2) {
+		for (int i = 0; i < len; i++) {
+			if (str[i] != _other.str[i]) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool String::operator != (const String& _other) {
+	int len = Length();
+	int len2 = _other.Length();
+	if (len == len2) {
+		for (int i = 0; i < len; i++) {
+			if (str[i] != _other.str[i]) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
