@@ -6,8 +6,8 @@
 using namespace std;
 
 int main() {
-    char hello[12] = "Hello World";
-    String* Hello = new String(hello);
+    char hello[12] = "Hello World"; // makes a char array called hello
+    String* Hello = new String(hello); // makes a new item of type String class, passing in the char array
     cout << Hello->CStr() << endl;
 }
 
