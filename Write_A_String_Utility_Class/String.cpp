@@ -37,10 +37,10 @@ String::~String() {
 
 size_t String::Length() const {
 	int len = 0;
-	for (int i = 0; i = strlen(str); i++) {
-		if (str[i] != '\0') { // checks if char at index i is the null terminator
-			len += 1; // if not the null terminator, len is increased by 1
-		}
+	int i = 0;
+	while (str[i] != '\0') { // iterates through the string until str[i] is the null terminator
+		len += 1; // if not the null terminator, len is increased by 1
+		i += 1;
 	}
 	return len;
 }
