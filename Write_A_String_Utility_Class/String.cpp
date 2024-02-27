@@ -49,6 +49,9 @@ String::String(const String& _other) {
 }
 
 String::~String() {
+	str = nullptr;
+	temp = nullptr;
+	at_index = nullptr;
 	delete str;
 	delete temp;
 	delete at_index;
@@ -97,27 +100,25 @@ bool String::EqualTo(const String& _other) const {
 
 String& String::Append(const String& _str) {
 	int len;
-	len = this->Length();
+	len = Length();
 	for (int i = 0; i < _str.Length(); i++) {
-		this->str[i + len] = _str.str[i]; // assigns the _str string to the end of str
+		str[i + len] = _str.str[i]; // assigns the _str string to the end of str
 	}
 	str[len + _str.Length()] = '\0';
 	return *this;
 }
 
 String& String::Prepend(const String& _str) {
-	for (int i = 0; i < this->Length(); i++) {
-		temp[i + _str.Length()] = str[i]; // assigns the string to the indices of temp after the length of the _str string
+	int len;
+	len = Length();
+	int len2;
+	len2 = _str.Length();
+	temp = _str.str;
+	for (int j = 0; j < len; j++) {
+		temp[j + len2] = str[j];
 	}
-	for (int j = 0; j < (this->Length() + _str.Length()); j++) {
-		if (j < _str.Length()) {
-			str[j] = _str.str[j]; // sets str to the values of the _str string
-		}
-		else if (j >= _str.Length()) {
-			str[j] = temp[j]; // assigns the values inside of temp to the end of str
-		}
-	}
-	str[Length() + _str.Length()] = '\0';
+	str = temp;
+	str[len + len2] = '\0';
 	return *this;
 }
 
@@ -270,6 +271,9 @@ bool String::operator < (const String& _other) {
 		if (str[i] < _other.str[i]) { // checks if the value in str[i] is less than the value in the other string at index i
 			return true;
 		}
+		if (str[i] > _other.str[i]) {
+			return false;
+		}
 	}
 	return false;
 }
@@ -280,6 +284,9 @@ bool String::operator > (const String& _other) {
 	for (int i = 0; i < len; i++) {
 		if (str[i] > _other.str[i]) { // checks if the value in str[i] is greater than the value in the other string at index i
 			return true;
+		}
+		if (str[i] < _other.str[i]) {
+			return false;
 		}
 	}
 	return false;
