@@ -90,12 +90,17 @@ const char& String::CharacterAt(size_t _index) const {
 }
 
 bool String::EqualTo(const String& _other) const {
-	if (this->str == _other.str) {
-		return true;
+	int len = Length();
+	int len2 = _other.Length();
+	if (len == len2) { // checks if the lengths are equal, if not then false
+		for (int i = 0; i < len; i++) {
+			if (str[i] != _other.str[i]) { // checks if any value is different between the strings, if so, then false
+				return false;
+			}
+		}
+		return true; // returns true only in the instance that the strings are the same length, and all values are equivalent
 	}
-	else {
-		return false;
-	}
+	return false;
 }
 
 String& String::Append(const String& _str) {
