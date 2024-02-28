@@ -191,18 +191,21 @@ String& String::Replace(const String& _find, const String& _replace) {
 	int start;
 	int len;
 	int len2;
+	int len3;
 	start = Find(_find.str);
 	len = _find.Length();
 	len2 = _replace.Length();
+	len3 = Length();
 	if (start != -1) {
-		for (int j = start + len; j < Length(); j++) {
+		for (int j = start + len; j < len3; j++) {
 			temp[j] = str[j]; // goes through the string from the start index + the length of the find string and sets temp to the values in str
 		}
-		for (int i = start; i < start + _replace.Length(); i++) {
+		for (int i = start; i < start + len2; i++) {
 			str[i] = _replace.str[i - start]; // replaces the find string with the replace string
 		}
-		for (int k = start + len2; k < (Length() - _find.Length() + _replace.Length()); k++) {
+		for (int k = start + len2; k < (len3 - len + len2); k++) {
 			str[k] = temp[k - len2 + len]; // adds the values after the find string back into str after the replace string
+			str[k + 1] = '\0';
 		}
 	}
 	return *this;
